@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.firstcode.postsapp.ui.details.DetailsViewModel" />
+    </data>
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/photo_imageview"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:minHeight="150dp"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                app:postImageUrl="@{viewModel.selectedPost}"
+                tools:ignore="ContentDescription"/>
+
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:postTitle="@{viewModel.selectedPost}"
+                tools:text="Title"
+                android:gravity="center"
+                android:textSize="21sp"
+                android:padding="16dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

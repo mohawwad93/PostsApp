@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation"
+    app:startDestination="@id/masterFragment">
+    <fragment
+        android:id="@+id/masterFragment"
+        android:name="com.firstcode.postsapp.ui.master.MasterFragment"
+        android:label="Posts" >
+        <action
+            android:id="@+id/action_listFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_addPostFragment"
+            app:destination="@id/addUpdatePostFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.firstcode.postsapp.ui.details.DetailsFragment"
+        android:label="Post Details" >
+        <argument
+            android:name="selectedPost"
+            app:argType="com.firstcode.postsapp.repository.paging.model.Post" />
+        <action
+            android:id="@+id/action_detailsFragment_to_addPostFragment"
+            app:destination="@id/addUpdatePostFragment"
+            app:launchSingleTop="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/addUpdatePostFragment"
+        android:name="com.firstcode.postsapp.ui.addupdatepost.AddUpdatePostFragment"
+        android:label="Add Post" >
+        <action
+            android:id="@+id/action_addUpdatePostFragment_to_masterFragment"
+            app:destination="@id/masterFragment"
+            app:popUpTo="@id/masterFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="updatedPost"
+            app:argType="com.firstcode.postsapp.repository.paging.model.Post"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_addUpdatePostFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment"
+            app:popUpTo="@id/detailsFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
